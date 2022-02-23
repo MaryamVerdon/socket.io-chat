@@ -3,6 +3,11 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+io.on('connection', function(socket){
+    console.log('a user connected');
+  });
+
+
 // On gère les requêtes HTTP des utilisateurs en leur renvoyant les fichiers du dossier 'public'
 app.use("/", express.static(__dirname + "/public"));
 
@@ -10,3 +15,4 @@ app.use("/", express.static(__dirname + "/public"));
 http.listen(3000, function(){
   console.log('Server is listening on *:3000');
 });
+
